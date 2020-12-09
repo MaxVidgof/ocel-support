@@ -1,15 +1,6 @@
 from lxml import etree
 
 
-def json_serial(obj):
-    """JSON serializer for objects not serializable by default json code"""
-    if "time" in str(type(obj)):
-        stru = str(obj)
-        #stru = stru.replace(" ", "T") + "Z"
-        return stru
-    return str(obj)
-
-
 def get_type(t0):
     if "float" in str(t0).lower() or "double" in str(t0).lower():
         return "float"
@@ -70,7 +61,7 @@ def apply(log, output_path, parameters=None):
         event_activity.set("value", v[prefix+"activity"])
         event_timestamp = etree.SubElement(event, "date")
         event_timestamp.set("key", "timestamp")
-        event_timestamp.set("value", str(v[prefix+"timestamp"]))
+        event_timestamp.set("value", str(v[prefix+"timestamp"]).replace(" ", "T"))
         event_omap = etree.SubElement(event, "list")
         event_omap.set("key", "omap")
         for k2 in v[prefix+"omap"]:

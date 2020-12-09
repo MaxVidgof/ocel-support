@@ -1,9 +1,10 @@
-import json
 import datetime
+import json
+
 
 def myconverter(o):
     if isinstance(o, datetime.datetime):
-        return o.__str__()
+        return o.__str__().replace(" ", "T")
 
 
 def apply(log, output_path, parameters=None):
