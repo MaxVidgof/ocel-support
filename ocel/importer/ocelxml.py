@@ -18,11 +18,34 @@ def apply(input_path, parameters=None):
     tree = objectify.parse(input_path, parser=parser)
     root = tree.getroot()
 
-    obj = {}
-    obj["ocel:events"] = {}
-    obj["ocel:objects"] = {}
+    log = {}
+    log["ocel:version"] = root.get("ocel-xml.version")
+    log["ocel:events"] = {}
+    log["ocel:objects"] = {}
 
     for child in root:
+        if child.tag.lower().endswith("global"):
+            scope = child.get("scope")
+            if scope == "event":
+                log["ocel:global-event"] = {}
+                for child2 in child:
+                    log["ocel:global-event"][child2.get("key")] = child2.get("value")
+            elif scope == "object":
+                log["ocel:global-object"] = {}
+                for child2 in child:
+                    log["ocel:global-object"][child2.get("key")] = child2.get("value")
+            elif scope == "log":
+                log["ocel:global-log"] = {}
+                for child2 in child:
+                    if child2.get("key") == "attribute-names":
+                        log["ocel:global-log"]["ocel:attribute-names"] = []
+                        for child3 in child2:
+                            log["ocel:global-log"]["ocel:attribute-names"].append(child3.get("value"))
+                    elif child2.get("key") == "object-types":
+                        log["ocel:global-log"]["ocel:object-types"] = []
+                        for child3 in child2:
+                            log["ocel:global-log"]["ocel:object-types"].append(child3.get("value"))
+
         if child.tag.lower().endswith("events"):
             for event in child:
                 eve = {}
@@ -42,7 +65,7 @@ def apply(input_path, parameters=None):
                         eve["ocel:vmap"] = {}
                         for child3 in child2:
                             eve["ocel:vmap"][child3.get("key")] = parse_xml(child3.get("value"), child3.tag.lower())
-                obj["ocel:events"][eve["ocel:id"]] = eve
+                log["ocel:events"][eve["ocel:id"]] = eve
                 del eve["ocel:id"]
         elif child.tag.lower().endswith("objects"):
             for object in child:
@@ -56,9 +79,7 @@ def apply(input_path, parameters=None):
                         obj["ocel:ovmap"] = {}
                         for child3 in child2:
                             obj["ocel:ovmap"][child3.get("key")] = parse_xml(child3.get("value"), child3.tag.lower())
-                obj["ocel:objects"][obj["ocel:id"]] = obj
+                log["ocel:objects"][obj["ocel:id"]] = obj
                 del obj["ocel:id"]
 
-    print(obj)
-
-    return obj
+    return log
