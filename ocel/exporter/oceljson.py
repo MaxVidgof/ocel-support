@@ -1,2 +1,8 @@
+import json
+
+
 def apply(log, output_path, parameters=None):
-    pass
+    if parameters is None:
+        parameters = {}
+
+    json.dump(log, open(output_path, "wb"))
