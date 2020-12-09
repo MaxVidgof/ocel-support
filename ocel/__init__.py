@@ -1,4 +1,6 @@
 from ocel import exporter, importer, validation
+from ocel.interface import *
+
 
 __version__ = '0.0.1'
 __doc__ = "OCEL (object-centric event log) support for Python"
