@@ -1,6 +1,6 @@
 from os.path import dirname, join
 
-import pm4pymdl
+import ocel
 from setuptools import setup
 
 
@@ -10,13 +10,13 @@ def read_file(filename):
 
 
 setup(
-    name=pm4pymdl.__name__,
-    version=pm4pymdl.__version__,
-    description=pm4pymdl.__doc__.strip(),
+    name=ocel.__name__,
+    version=ocel.__version__,
+    description=ocel.__doc__.strip(),
     long_description=read_file('README.md'),
-    author=pm4pymdl.__author__,
-    author_email=pm4pymdl.__author_email__,
-    py_modules=[pm4pymdl.__name__],
+    author=ocel.__author__,
+    author_email=ocel.__author_email__,
+    py_modules=[ocel.__name__],
     include_package_data=True,
     packages=['ocel', 'ocel.exporter', 'ocel.importer', 'ocel.validation'],
     url='http://www.pm4py.org',
