@@ -10,7 +10,7 @@ def read_file(filename):
 
 
 setup(
-    name=ocel.__name__,
+    name="ocel-standard",
     version=ocel.__version__,
     description=ocel.__doc__.strip(),
     long_description=read_file('README.md'),
