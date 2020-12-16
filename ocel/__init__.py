@@ -2,7 +2,7 @@ from ocel import exporter, importer, validation
 from ocel.interface import *
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __doc__ = "OCEL (object-centric event log) support for Python"
 __author__ = 'PADS'
 __author_email__ = 'a.berti@pads.rwth-aachen.de'

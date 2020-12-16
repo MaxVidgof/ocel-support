@@ -1,4 +1,4 @@
-from dateutil import parser as date_parser
+from datetime import datetime
 from lxml import etree, objectify
 
 
@@ -6,7 +6,7 @@ def parse_xml(value, tag_str_lower):
     if "float" in tag_str_lower:
         return float(value)
     elif "date" in tag_str_lower:
-        return date_parser.parse(value)
+        return datetime.fromisoformat(value)
     return str(value)
 
 
@@ -53,7 +53,7 @@ def apply(input_path, parameters=None):
                     if child2.get("key") == "id":
                         eve["ocel:id"] = child2.get("value")
                     elif child2.get("key") == "timestamp":
-                        eve["ocel:timestamp"] = date_parser.parse(child2.get("value"))
+                        eve["ocel:timestamp"] = datetime.fromisoformat(child2.get("value"))
                     elif child2.get("key") == "activity":
                         eve["ocel:activity"] = child2.get("value")
                     elif child2.get("key") == "omap":

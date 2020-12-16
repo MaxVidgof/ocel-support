@@ -61,7 +61,7 @@ def apply(log, output_path, parameters=None):
         event_activity.set("value", v[prefix+"activity"])
         event_timestamp = etree.SubElement(event, "date")
         event_timestamp.set("key", "timestamp")
-        event_timestamp.set("value", str(v[prefix+"timestamp"]).replace(" ", "T"))
+        event_timestamp.set("value", v[prefix+"timestamp"].isoformat())
         event_omap = etree.SubElement(event, "list")
         event_omap.set("key", "omap")
         for k2 in v[prefix+"omap"]:

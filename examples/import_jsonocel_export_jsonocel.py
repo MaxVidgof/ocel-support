@@ -6,6 +6,7 @@ def execute_script():
     log = ocel.import_log("../logs/minimal.jsonocel")
     ocel.export_log(log, "log1.jsonocel")
     print("validated output", ocel.validate("log1.jsonocel", "../schemas/schema.json"))
+    ocel.import_log("log1.jsonocel")
 
 
 if __name__ == "__main__":

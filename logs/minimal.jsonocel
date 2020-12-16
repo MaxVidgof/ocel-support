@@ -28,7 +28,7 @@
   "ocel:events": {
     "e1": {
       "ocel:activity": "place_order",
-      "ocel:timestamp": "2020-07-09 08:20:01.527+01:00",
+      "ocel:timestamp": "2020-07-09T08:20:01.527+01:00",
       "ocel:omap": [
         "i1",
         "o1",
@@ -41,7 +41,7 @@
     },
     "e2": {
       "ocel:activity": "check_availability",
-      "ocel:timestamp": "2020-07-09 08:21:01.527+01:00",
+      "ocel:timestamp": "2020-07-09T08:21:01.527+01:00",
       "ocel:omap": [
         "i1"
       ],
@@ -52,7 +52,7 @@
     },
     "e3": {
       "ocel:activity": "load_package",
-      "ocel:timestamp": "2020-07-09 08:22:01.527+01:00",
+      "ocel:timestamp": "2020-07-09T08:22:01.527+01:00",
       "ocel:omap": [
         "r1",
         "p1"
