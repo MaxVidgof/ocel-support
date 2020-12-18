@@ -18,9 +18,6 @@ def apply(log, output_path, parameters=None):
 
     root = etree.Element("log")
 
-    if "ocel:version" in log:
-        root.set("ocel-xml.version", str(log["ocel:version"]))
-
     global_event = etree.SubElement(root, "global")
     global_event.set("scope", "event")
     for k, v in log[prefix +"global-event"].items():
@@ -50,6 +47,14 @@ def apply(log, output_path, parameters=None):
         subel = etree.SubElement(object_types, "string")
         subel.set("key", "object-type")
         subel.set("value", k)
+    if prefix + "version" in log[prefix + "global-log"]:
+        version = etree.SubElement(global_log, "string")
+        version.set("key", "version")
+        version.set("value", log[prefix + "global-log"][prefix + "version"])
+    if prefix + "ordering" in log[prefix + "global-log"]:
+        ordering = etree.SubElement(global_log, "string")
+        ordering.set("key", "ordering")
+        ordering.set("value", log[prefix + "global-log"][prefix + "ordering"])
     events = etree.SubElement(root, "events")
     for k, v in log[prefix + "events"].items():
         event = etree.SubElement(events, "event")

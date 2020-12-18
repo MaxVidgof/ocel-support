@@ -19,7 +19,6 @@ def apply(input_path, parameters=None):
     root = tree.getroot()
 
     log = {}
-    log["ocel:version"] = root.get("ocel-xml.version")
     log["ocel:events"] = {}
     log["ocel:objects"] = {}
 
@@ -45,6 +44,10 @@ def apply(input_path, parameters=None):
                         log["ocel:global-log"]["ocel:object-types"] = []
                         for child3 in child2:
                             log["ocel:global-log"]["ocel:object-types"].append(child3.get("value"))
+                    elif child2.get("key") == "version":
+                        log["ocel:global-log"]["ocel:version"] = child2.get("value")
+                    elif child2.get("key") == "ordering":
+                        log["ocel:global-log"]["ocel:ordering"] = child2.get("value")
 
         if child.tag.lower().endswith("events"):
             for event in child:

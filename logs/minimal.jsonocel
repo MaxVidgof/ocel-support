@@ -1,6 +1,7 @@
 {
-  "ocel:version": "1.0",
   "ocel:global-log": {
+    "ocel:version": "0.1",
+    "ocel:ordering": "timestamp",
     "ocel:attribute-names": [
       "color",
       "costs",

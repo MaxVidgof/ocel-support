@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<log ocel-xml.version="1.0">
+<log>
   <global scope="event">
     <string key="id" value="__INVALID__"/>
 		<string key="activity" value="__INVALID__"/>
@@ -11,6 +11,8 @@
 		<string key="type" value="__INVALID__"/>
 	</global>
   <global scope="log">
+    <string key="version" value="0.1" />
+    <string key="ordering" value="timestamp" />
     <list key="attribute-names">
       <string key="name" value="color"/>
       <string key="name" value="costs"/>
