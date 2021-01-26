@@ -15,7 +15,7 @@ def get_object_types(log):
 
 
 def get_version(log):
-    return log["ocel:version"]
+    return log["ocel:global-log"]["ocel:version"]
 
 
 def get_global_event(log):
