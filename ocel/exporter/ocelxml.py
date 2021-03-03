@@ -1,13 +1,18 @@
 from lxml import etree
 
 
-def get_type(t0):
-    if "float" in str(t0).lower() or "double" in str(t0).lower():
+def get_type(t0):    
+    if isinstance(t0, float) or isinstance(t0, int):
         return "float"
     elif "object" in str(t0).lower():
         return "string"
     else:
-        return "string"
+        try:
+            float(t0)
+            return "float"
+        except ValueError:
+            return "string"
+
 
 
 def apply(log, output_path, parameters=None):
